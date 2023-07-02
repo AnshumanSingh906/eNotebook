@@ -4,7 +4,7 @@ import { createContext } from "react";
 export const NoteContext = createContext();
 
 const Notestate = ({ children }) => {
-  const host = "http://localhost:3002";
+  const host = "https://e-notebook-backend.vercel.app";
   const [notes, setNotes] = useState([]);
 
   // useEffect(() => {
@@ -28,7 +28,7 @@ const Notestate = ({ children }) => {
     // api call
         // console.log("saved token in localStorage",localStorage.getItem("token"));
 
-    const response = await fetch(`http://localhost:3002/api/notes/addnotes`, {
+    const response = await fetch(`https://e-notebook-backend.vercel.app/api/notes/addnotes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

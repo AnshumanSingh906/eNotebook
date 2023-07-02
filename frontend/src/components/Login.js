@@ -6,7 +6,7 @@ const Login = (props) => {
   const handleSubmit = async (e) => {
     
     e.preventDefault();
-    const url = `http://localhost:3002/api/auth/login`;
+    const url = `https://e-notebook-backend.vercel.app/api/auth/login`;
     const response = await fetch(url, {
       method: "POST",
       headers: {

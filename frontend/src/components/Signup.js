@@ -12,7 +12,7 @@ export const Signup = (props) => {
   const handleSubmit = async (e) => {
     const { name, password, email, cpassword } = credentials;
     e.preventDefault();
-    const url = `http://localhost:3002/api/auth/createuser`;
+    const url = `https://e-notebook-backend.vercel.app/api/auth/createuser`;
     const response = await fetch(url, {
       method: "POST",
       headers: {
