@@ -1,41 +1,3 @@
-// const express= require('express');
-// const user= require('../models/User');
-// const router=express.Router();
-// const {body, validationResult} = require('express-validator');
-
-
-// router.post('/',[
-//     body('title','is ok...').isLength({min:3}),
-//     body('email','is email').isEmail(),
-//     body('password','is good pass').isLength({min:5}),
-// ], (req,res)=>{
-//     const error=validationResult(req);
-//     if(!error.isEmpty()){
-//         return res.status(400).json({error:error.array()});
-//     }
-//     // user.create(
-//     //     {
-//     //         name:req.body.name,
-//     //         email:req.body.email,
-//     //         password:req.body.password
-//     //     }
-//     // ).then((user)=>{
-//     //     res.json(user);
-//     //     }).catch((err)=>res.status(500).json({error:err.message}));
-// });
-
-
-// router.get('/',(req,res)=>{
-//     res.send("Hello World from /api/auth/ ho ho");
-// });
-
-// router.get('/about',(req,res)=>{    
-//     res.send("Hello World from /api/auth/about");
-// });
-// ...rest of the initial code omitted for simplicity.
-
-
-
 const { body, validationResult } = require('express-validator');
 const express= require('express');
 const User= require('../models/User');
@@ -52,12 +14,7 @@ router.post('/createuser',
     body('email','Enter a valid email').isEmail(),
     body('password','Enter a valid password').isLength({min:5})
 ],async (req,res)=>{
-    // console.log(req.body);
     
-    // const user=new User(req.body);
-    // user.save();
-    // res.send(req.body);
-
     const errors = validationResult(req);
     console.log(errors);
     if (!errors.isEmpty()) {
@@ -89,22 +46,7 @@ router.post('/createuser',
     const authToken= jwt.sign(data, JwT_SECRET);
 
     res.json({"success": true, "authToken": authToken});
-    //return res.json(user);
-    // // }).then((user)=>{
-    // //     return res.json(user)
-    // // }).catch((err)=> {return res.status(500).json({error:err.message})} );
-
-    // // console.log(req.body);
-    
-    // // const user=new User(req.body);
-    // // user.save();
-    // // res.send(req.body);
-
-
-
 });
-
-// <--  CREATE A USER END
 
 
 // --> AUTHENTICATE USER FOR LOGIN "API/AUTH/LOGIN". 
@@ -116,7 +58,7 @@ router.post('/login',
 ],async(req,res)=>{
 
     const errors = validationResult(req);
-    console.log(errors);
+    
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
@@ -156,28 +98,6 @@ router.post('/login',
 });
 
 // <-- authenticate login done
-
-
-
-
-
-
-
-
-
-// ROUTE 3: Get loggedin User Details using: POST "/api/auth/getuser". Login required
-// router.post('/getuser', fetchuser,  async (req, res) => {
-
-//     try {
-//       const userId = req.user.id;
-//       const user = await User.findById(userId).select("-password")
-//       res.send(user);
-//     } catch (error) {
-//       console.error(error.message);
-//       res.status(500).send("Internal Server Error");
-//     }
-//   })
-
 
 
 
