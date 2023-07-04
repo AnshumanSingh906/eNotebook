@@ -78,7 +78,7 @@ router.post('/login',
         if(!passwordComapre)
         {
             return res.status(400).json({
-                error: "Please try to login with correct credentisls"
+                error: "Please try to login with correct credentials"
             })
         }
 
